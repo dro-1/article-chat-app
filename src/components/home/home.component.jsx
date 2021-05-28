@@ -78,7 +78,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    socketRef.current = io("https://dro-chat-app-api.herokuapp.com");
+    socketRef.current = io("http://localhost:3000");
 
     socketRef.current.on("connect", () => {});
 

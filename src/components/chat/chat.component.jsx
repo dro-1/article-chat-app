@@ -38,7 +38,7 @@ const Chat = ({ recipient, sender }) => {
         content: message,
       },
     };
-    await axios.post("https://dro-chat-app-api.herokuapp.com/message", body, {
+    await axios.post("http://localhost:3000/message", body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -63,7 +63,7 @@ const Chat = ({ recipient, sender }) => {
   useEffect(() => {
     if (!chat?._id) return;
 
-    socketRef.current = io("https://dro-chat-app-api.herokuapp.com", {
+    socketRef.current = io("http://localhost:3000", {
       query: { chatId: chat._id },
     });
 
