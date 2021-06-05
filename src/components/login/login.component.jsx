@@ -11,6 +11,7 @@ import { UserContext } from "../../context/user.provider";
 const Login = () => {
   const history = useHistory();
   const { setCurrentUser } = useContext(UserContext);
+
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -45,40 +46,40 @@ const Login = () => {
     }
   };
 
-  const handleTwitterSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      const authRes = await signInWithTwitter();
+  // const handleTwitterSignIn = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const authRes = await signInWithTwitter();
 
-      const body = {
-        query: `
-        mutation CreateUser($name: String!, $image: String!){
-          createUser(data:{
-            name: $name
-            image: $image
-          }){
-            name
-            image
-          }
-        }
-        `,
-        variables: {
-          name: authRes.user.displayName,
-          image: authRes.user.photoURL ? authRes.user.photoURL : "",
-        },
-      };
+  //     const body = {
+  //       query: `
+  //       mutation CreateUser($name: String!, $image: String!){
+  //         createUser(data:{
+  //           name: $name
+  //           image: $image
+  //         }){
+  //           name
+  //           image
+  //         }
+  //       }
+  //       `,
+  //       variables: {
+  //         name: authRes.user.displayName,
+  //         image: authRes.user.photoURL ? authRes.user.photoURL : "",
+  //       },
+  //     };
 
-      const res = await axiosInstance.post("/graphql", body);
-      const user = res?.data?.data?.createUser;
-      if (user) {
-        setCurrentUser(user, true);
-      }
+  //     const res = await axiosInstance.post("/graphql", body);
+  //     const user = res?.data?.data?.createUser;
+  //     if (user) {
+  //       setCurrentUser(user, true);
+  //     }
 
-      history.push("/");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  //     history.push("/");
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   return (
     <div className="login">
@@ -86,7 +87,7 @@ const Login = () => {
         <header>Login</header>
         <form className="login">
           <button onClick={handleGoogleSignIn}>Login With Gmail</button>
-          <button onClick={handleTwitterSignIn}>Login With Twitter</button>
+          {/* <button onClick={handleTwitterSignIn}>Login With Twitter</button> */}
         </form>
       </main>
     </div>

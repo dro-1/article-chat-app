@@ -1,5 +1,4 @@
 import "./loader.scss";
-
 const Loader = () => (
   <div className="loader">
     <div class="loader loader--style3" title="2">

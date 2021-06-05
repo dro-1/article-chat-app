@@ -21,8 +21,8 @@ googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
-const twitterProvider = new firebase.auth.TwitterAuthProvider();
+// const twitterProvider = new firebase.auth.TwitterAuthProvider();
 
-export const signInWithTwitter = () => auth.signInWithPopup(twitterProvider);
+// export const signInWithTwitter = () => auth.signInWithPopup(twitterProvider);
 
 export default firebase;
